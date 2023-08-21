@@ -1,0 +1,36 @@
+{
+  "name": "kairos",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ROH-WON/kairos.git",
+  "author": "rohwon <rohco09@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "devDependencies": {
+    "jest": "^29.6.2"
+  },
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "base64-img": "^1.0.4",
+    "bcrypt": "^5.1.0",
+    "bucket": "^0.0.1",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "dotenv": "^16.3.1",
+    "express": "~4.16.1",
+    "jsonwebtoken": "^9.0.1",
+    "moment": "^2.29.4",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "multer-s3": "^3.0.1",
+    "nodemailer": "^6.9.4",
+    "nodemon": "^3.0.1",
+    "sharp": "^0.32.4",
+    "uuid": "^9.0.0"
+  }
+}
