@@ -1,27 +1,22 @@
 import express from "express";
-import pool from "./database.js";
+import bodyParser from "body-parser";
 import cors from "cors";
-const app = express();
+import todoRoutes from "./routers/router.js"; // 수정된 경로
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
+const createApp = () => {
+  const app = express();
 
-app.post("/create", async (req, res) => {
-  try {
-    let { content } = req.body;
-    console.log(content);
-    const conn = await pool.getConnection();
-    let sql = "insert into todotable (content) values(?)";
-    let data = [content];
-    console.log(data);
-    const [rows] = await pool.query(sql, data);
-    res.status(200).json({ result: rows });
-    conn.release();
-  } catch (error) {
-    console.log(error);
-  }
-});
-app.listen(8080, () => {
-  console.log("실행!");
-});
+  app.use(cors());
+  app.use(express.json());
+  app.use(bodyParser.urlencoded({ extended: true }));
+
+  app.get("/", (req, res) => {
+    res.send("Hello World");
+  });
+
+  app.use("/todos", todoRoutes); // 수정된 경로
+
+  return app;
+};
+
+export default createApp;
