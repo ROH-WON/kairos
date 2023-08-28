@@ -1,44 +1,39 @@
-// services/todoService.js
+import { models } from "../db/model/model.js";
 
-import {
-  createTodoRepository,
-  listTodosRepository,
-  updateTodoRepository,
-  deleteTodoRepository,
-} from "../db/model.js";
-
-export const createTodoService = async (content) => {
-  try {
-    const result = await createTodoRepository(content);
-    return result;
-  } catch (error) {
-    throw error;
+class service {
+  static async createTodoService(content) {
+    try {
+      const result = await models.createTodoRepository(content);
+      return result;
+    } catch (error) {
+      throw error;
+    }
   }
-};
 
-export const listTodosService = async () => {
-  try {
-    const result = await listTodosRepository();
-    return result;
-  } catch (error) {
-    throw error;
+  static async listTodosService() {
+    try {
+      const result = await models.listTodosRepository();
+      return result;
+    } catch (error) {
+      throw error;
+    }
   }
-};
+  static async updateTodoService(idx, content) {
+    try {
+      const result = await models.updateTodoRepository(idx, content);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
 
-export const updateTodoService = async (idx, content) => {
-  try {
-    const result = await updateTodoRepository(idx, content);
-    return result;
-  } catch (error) {
-    throw error;
+  static async deleteTodoService(idx) {
+    try {
+      const result = await models.deleteTodoRepository(idx);
+      return result;
+    } catch (error) {
+      throw error;
+    }
   }
-};
-
-export const deleteTodoService = async (idx) => {
-  try {
-    const result = await deleteTodoRepository(idx);
-    return result;
-  } catch (error) {
-    throw error;
-  }
-};
+}
+export { service };
